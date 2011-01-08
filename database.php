@@ -36,6 +36,8 @@
 			while (list($tables) = mysqli_fetch_array($result)) {
 				echo " -> " . $tables . "<br />";
 			}
+		} else {
+			echo $_GET['database_name'] . " -> Empty set";
 		}
 		mysqli_close($connection);
 	}
