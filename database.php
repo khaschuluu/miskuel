@@ -26,8 +26,8 @@
 	if(!$_GET['database_name'])
 		header("Location: index.php");
 	else {
-		// $connection - Database connector object
-		$connection = @mysqli_connect('localhost', 'root', '', $_GET['database_name']) or die("Can't connect database.\nError: " . mysqli_connect_error());
+		$db = $_GET['database_name'];
+		include 'db.php';
 		// $result catch query return
 		$result = mysqli_query($connection, 'SHOW TABLES;');
 		if (mysqli_affected_rows($connection)) {

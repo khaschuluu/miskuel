@@ -22,8 +22,7 @@
  * @deprecated
  */
 
-	// $connection - Database connector object
-	$connection = @mysqli_connect('localhost', 'root', '') or die("Can't connect database.\nError: " . mysqli_connect_error());
+	include 'db.php';
 	// $result catch query return
 	$result = mysqli_query($connection, 'SHOW DATABASES;');
 	if (mysqli_affected_rows($connection)) {
