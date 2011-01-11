@@ -9,17 +9,9 @@
  *
  * LICENSE: OpenSource
  * 
- * @category
- * @package
  * @author		Khaschuluu Munkhbayar <khaschuluu.m@gmail.com>
- * @author
- * @copyright
- * @license
- * @version
  * @link		http://github.com/khaschuluu/miskuel/blob/master/database.php
- * @see
  * @since		File avalable since frist commit
- * @deprecated
  */
 
 	// database_name is selected database's name from index.php

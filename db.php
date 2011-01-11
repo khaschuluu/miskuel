@@ -9,17 +9,9 @@
  *
  * LICENSE: OpenSource
  * 
- * @category
- * @package
  * @author		Khaschuluu Munkhbayar <khaschuluu.m@gmail.com>
- * @author
- * @copyright
- * @license
- * @version
  * @link		http://github.com/khaschuluu/miskuel/blob/master/database.php
- * @see
  * @since		File avalable since 4th commit
- * @deprecated
  */
 
  	session_start();

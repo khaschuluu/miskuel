@@ -9,17 +9,9 @@
  *
  * LICENSE: OpenSource
  * 
- * @category
- * @package
  * @author		Khaschuluu Munkhbayar <khaschuluu.m@gmail.com>
- * @author
- * @copyright
- * @license
- * @version
  * @link		http://github.com/khaschuluu/miskuel/blob/master/database.php
- * @see
  * @since		File avalable since frist commit
- * @deprecated
  */
 
 	// Create database.
@@ -34,6 +26,8 @@
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	</head>
 	<body>
+		<a href="logout.php?logout=true">Logout</a>
+		<br />
 		<?php
 			if ($notice != null)
 				echo $notice . "<br />";
