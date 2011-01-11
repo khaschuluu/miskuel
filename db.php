@@ -22,9 +22,10 @@
  * @deprecated
  */
 
-	$host = 'localhost';	// Host name. Example: localhost etc.
-	$user = 'root'; // User name. Exapmle: root etc.
-	$pass = ''; // User password. Example: root etc.
+ 	session_start();
+	if (!isset($_SESSION['host']) && !isset($_SESSION['username']) && !isset($_SESSION['password']))
+		header("Location: login.php");
+
 	// $connection - Database connector object
-	$connection = @mysqli_connect($host, $user, $pass, $db) or die("Can't connect database.\nError: " . mysqli_connect_error());
+	$connection = @mysqli_connect($_SESSION['host'], $_SESSION['username'], $_SESSION['password'], $db) or die("Can't connect database.\nError: " . mysqli_connect_error());
 ?>
