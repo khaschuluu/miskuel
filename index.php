@@ -17,10 +17,17 @@
 	// Create database.
 	if (isset($_POST['create_database_name'])) {
 		include 'db.php';
-		$result = mysqli_query($connection, 'CREATE DATABASE ' . $_POST['create_database_name'] . ";");
+		$result = mysqli_query($connection, 'CREATE DATABASE ' . $_POST['create_database_name']);
+		mysqli_close($connection);
+	}
+	
+	if (isset($_GET['drop_database_name'])) {
+		include 'db.php';
+		$result = mysqli_query($connection, 'DROP DATABASE ' . $_GET['drop_database_name']);
 		mysqli_close($connection);
 	}
 ?>
+
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -39,7 +46,7 @@
 				echo "Databases are:<br />";
 				// $batabases - Database names
 				while (list($databases) = mysqli_fetch_array($result)) {
-					echo " -> <a href=\"database.php?database_name=" . $databases . "\">" . $databases . "</a><br />";
+					echo " -> <a href=\"database.php?database_name=" . $databases . "\">" . $databases . "</a> [<a href=\"index.php?drop_database_name=" . $databases . "\">drop</a>]<br />\n";
 				}
 			}
 			mysqli_close($connection);
