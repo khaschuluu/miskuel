@@ -35,6 +35,11 @@
 	<body>
 		<a href="logout.php?logout=true">Logout</a>
 		<br />
+		<table border=0>
+			<tr>
+				<th>Database name</th>
+				<th></th>
+			</tr>
 		<?php
 			if ($notice != null)
 				echo $notice . "<br />";
@@ -43,20 +48,18 @@
 			// $result catch query return
 			$result = mysqli_query($connection, 'SHOW DATABASES;');
 			if (mysqli_affected_rows($connection)) {
-				echo "Databases are:<br />";
 				// $batabases - Database names
 				while (list($databases) = mysqli_fetch_array($result)) {
-					echo " -> <a href=\"database.php?database_name=" . $databases . "\">" . $databases . "</a> [<a href=\"index.php?drop_database_name=" . $databases . "\">drop</a>]<br />\n";
+					echo "<tr><td><a href=\"database.php?database_name=" . $databases . "\">" . $databases . "</a></td><td><input type=\"button\" value=\"-\" onclick=\"window.location.href='index.php?drop_database_name=" . $databases . "'\"></td><tr>\n";
 				}
 			}
 			mysqli_close($connection);
 		?>
-		<br />
-		Create database:
+		<tr>
 		<form action="index.php" method="POST" name="index">
-			New database name:
-				<input type="text" name="create_database_name" />
-				<input type="submit" value="create" />
+				<td><input type="text" name="create_database_name" /></td>
+				<td><input type="submit" value="+" /></td>
 		</form>
+		</tr>
 	</body>
 </html>

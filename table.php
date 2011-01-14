@@ -22,25 +22,26 @@
 	</head>
 	<body>
 		<a href="index.php">Home</a> | 
+		<a href="database.php?database_name=<?php echo $_GET['database_name'] ?>">Back</a> | 
 		<a href="logout.php?logout=true">Logout</a>
 		<br />
 		<table border=0>
 		<?php
-			if(!$_GET['database_name'])
+			if(!isset($_GET['database_name']) && !isset($_GET['table_name']))
 				header("Location: index.php");
 			else {
 				$db = $_GET['database_name'];
 				include 'db.php';
 				// $result catch query return
-				$result = mysqli_query($connection, 'SHOW TABLES;');
+				$result = mysqli_query($connection, 'SELECT * FROM ' . $_GET['table_name']);
 				if (mysqli_affected_rows($connection)) {
-					echo "<tr><th>Table name</th></tr><h1>" . $_GET['database_name'] . "</h1>";
-					// $tables - Table names
-					while (list($tables) = mysqli_fetch_array($result)) {
-						echo "<tr><td><a href=\"table.php?database_name=" . $_GET['database_name'] . "&table_name=" . $tables . "\">" . $tables . "</a></td></tr>\n";
+					echo "<h1>" . $_GET['database_name'] . "</h1><h3>" . $_GET['table_name'] . "</h3><b>Column name</b><br />";
+					// $tables - Column names
+					while (list($tables, $blah) = mysqli_fetch_array($result)) {
+						echo $tables . " | " . $blah . "<br />\n";
 					}
 				} else {
-					echo "<h1>" . $_GET['database_name'] . "</h1><br />\nDatabase is <b>empty</b>";
+					echo "<h1>" . $_GET['table_name'] . "</h1><br />\nTable is <b>empty</b>";
 				}
 				mysqli_close($connection);
 			}
